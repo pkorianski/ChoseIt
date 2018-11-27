@@ -11,6 +11,27 @@ import XCTest
 
 class ChoseItTests: XCTestCase {
     
+    //MARK: ChooseList Tests
+    func testChooseListInitializationSucceeds() {
+        // Testing a blank list
+        let zeroItemsInList = ChoseList.init(name: "Dinner",photo: nil, list: [])
+        XCTAssertNotNil(zeroItemsInList)
+        
+        let itemsinList = ChoseList.init(name: "Moves", photo: nil, list: ["Qdoba","Finz","Turners"])
+        XCTAssertNotNil(itemsinList)
+        
+    }
+    
+    func testChooseListInitializationFails() {
+        // Testing blank name
+        let blankName = ChoseList.init(name: "", photo: nil, list: [])
+        XCTAssertNil(blankName)
+        
+        // Actual Fail
+        //let fail = ChoseList.init(name: "Food Recipes", photo: nil, list: [])
+        //XCTAssertNil(fail)
+    }
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
