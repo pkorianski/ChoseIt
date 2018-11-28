@@ -12,6 +12,10 @@ import os.log
 class CreateListViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //UITextFieldDelegate
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        //Disable the save button while editing
+        saveButton.isEnabled = false
+    }
 
     //MARK: Properties
     @IBOutlet weak var nameTextField: UITextField!
@@ -65,6 +69,9 @@ class CreateListViewController: UIViewController, UITextFieldDelegate, UIImagePi
         
         // Handle the text field’s user input through delegate callbacks.
         nameTextField.delegate = self
+        
+        // Enable the Save button only if the text field has a valid Meal name.
+        updateSaveButtonState()
        
     }
 
@@ -81,11 +88,16 @@ class CreateListViewController: UIViewController, UITextFieldDelegate, UIImagePi
 
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        updateSaveButtonState()
+        navigationItem.title = textField.text
     }
     
 
     
-    // MARK: - Navigation
+    //MARK: - Navigation
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     // This method lets you configure a view controller before it's presented.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -102,6 +114,13 @@ class CreateListViewController: UIViewController, UITextFieldDelegate, UIImagePi
         
         // Set the list to be passed to MyListTableViewController after the unwind segue.
         list = ChoseList(name: name, photo: photo, list: [])
+    }
+    
+    //MARK: Private Methods
+    private func updateSaveButtonState() {
+        // Disable the save button if the text field is empty
+        let text = nameTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
     }
  
 

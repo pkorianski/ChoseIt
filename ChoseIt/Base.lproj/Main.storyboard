@@ -43,6 +43,7 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="Igq-5E-EPZ" id="oOq-kb-5IJ"/>
                                     <outlet property="photoImageView" destination="2SC-o2-yZ5" id="KEO-HS-wXM"/>
+                                    <segue destination="xlU-6v-EoM" kind="show" identifier="ShowList" id="ePx-jU-b3G"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -91,7 +92,11 @@
                         <viewLayoutGuide key="safeArea" id="2Cf-ac-z3C"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add New List" id="fcB-jK-gw5">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="4Gx-kP-gCo"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="4Gx-kP-gCo">
+                            <connections>
+                                <action selector="cancel:" destination="ifF-mQ-PX9" id="61d-Fw-puZ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="dxX-mv-1ti">
                             <connections>
                                 <segue destination="nrF-0V-5ON" kind="unwind" unwindAction="unwindToChoseListWithSender:" id="Ede-Oq-7yN"/>
@@ -271,6 +276,134 @@
             </objects>
             <point key="canvasLocation" x="798" y="-702"/>
         </scene>
+        <!--Decision Time!-->
+        <scene sceneID="QFi-pY-Uuz">
+            <objects>
+                <viewController id="uhS-fS-33h" customClass="DecisionViewController" customModule="ChoseIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n6b-fx-VwE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o3E-2Q-0F3">
+                                <rect key="frame" x="0.0" y="88" width="375" height="427"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="SsB-O6-VXf" customClass="DecisionTableViewCell" customModule="ChoseIt" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SsB-O6-VXf" id="ckd-Zc-tWZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkK-V1-5Rk">
+                                                    <rect key="frame" x="15" y="11" width="345" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="optionNameLabel" destination="JkK-V1-5Rk" id="gPy-gT-vJC"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="uhS-fS-33h" id="oTQ-OA-nBh"/>
+                                    <outlet property="delegate" destination="uhS-fS-33h" id="0kf-Qu-CNC"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulm-T7-vB0">
+                                <rect key="frame" x="16" y="544" width="343" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Press Here for the Decision"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chose: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJF-Ti-XyN">
+                                <rect key="frame" x="16" y="613" width="343" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="iCJ-CT-KU4"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Decision Time!" id="bEr-m1-JN7">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="tuo-cA-VXX">
+                            <connections>
+                                <action selector="back:" destination="uhS-fS-33h" id="Rex-xw-hko"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7xa-jJ-Tcy">
+                            <connections>
+                                <segue destination="P6z-f9-Mz4" kind="presentation" id="Qkm-1d-4hj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="jJw-ol-pFT" id="jQU-KX-tMt"/>
+                        <outlet property="tableView" destination="o3E-2Q-0F3" id="ZZ2-ho-kNw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s7H-d5-qZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="jJw-ol-pFT">
+                    <connections>
+                        <outlet property="delegate" destination="uhS-fS-33h" id="PpK-N7-L74"/>
+                        <outlet property="searchContentsController" destination="uhS-fS-33h" id="FlC-dK-jtT"/>
+                        <outlet property="searchResultsDataSource" destination="uhS-fS-33h" id="G7N-dy-CgT"/>
+                        <outlet property="searchResultsDelegate" destination="uhS-fS-33h" id="8yK-gg-FyH"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="2589.5999999999999" y="-683.49753694581284"/>
+        </scene>
+        <!--Add New Item-->
+        <scene sceneID="hp0-iC-mA5">
+            <objects>
+                <viewController id="OhR-k8-qAA" customClass="CreateItemViewController" customModule="ChoseIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9bS-wU-lh2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter new item name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tgK-SG-mNq">
+                                <rect key="frame" x="16" y="131" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="jSo-Sr-nJj"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add New Item" id="Crx-4W-kK8">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ixo-9C-dyd">
+                            <connections>
+                                <action selector="cancel:" destination="OhR-k8-qAA" id="fRp-lK-xxF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="vxm-jY-cMg">
+                            <connections>
+                                <segue destination="2Sz-Ad-dxo" kind="unwind" unwindAction="unwindToItemListWithSender:" id="fz8-5V-xRe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="itemtextField" destination="tgK-SG-mNq" id="pn1-Hj-Vm5"/>
+                        <outlet property="saveButton" destination="vxm-jY-cMg" id="k1G-PT-RYA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ymI-Nu-Dud" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="2Sz-Ad-dxo" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4474.3999999999996" y="-683.49753694581284"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -294,7 +427,7 @@
         <scene sceneID="WvQ-uj-mjX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BKu-ht-CHc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Lists" id="dhG-5L-Lkl"/>
+                    <tabBarItem key="tabBarItem" title="My Lists" image="list_bar" id="dhG-5L-Lkl"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M4y-go-4xa">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -327,10 +460,47 @@
             </objects>
             <point key="canvasLocation" x="2589.5999999999999" y="0.0"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="F0E-Xy-C3y">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xlU-6v-EoM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fST-x4-CGM">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uhS-fS-33h" kind="relationship" relationship="rootViewController" id="sYb-bs-BF5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qG8-5u-PXo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1773.5999999999999" y="-683.49753694581284"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="z0O-yK-9cN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P6z-f9-Mz4" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="R8M-RX-3pS">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OhR-k8-qAA" kind="relationship" relationship="rootViewController" id="UMc-UV-xy8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="euK-ZY-wxz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3532" y="-683.49753694581284"/>
+        </scene>
     </scenes>
     <resources>
         <image name="default_image" width="320" height="320"/>
         <image name="food_pic" width="338" height="252"/>
+        <image name="list_bar" width="30" height="30"/>
         <image name="movies_pic" width="850" height="552"/>
         <image name="restaurant_pic" width="800" height="400"/>
     </resources>
