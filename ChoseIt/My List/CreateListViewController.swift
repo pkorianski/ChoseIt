@@ -70,6 +70,9 @@ class CreateListViewController: UIViewController, UITextFieldDelegate, UIImagePi
         // Handle the text field’s user input through delegate callbacks.
         nameTextField.delegate = self
         
+        // Make the text field the first responder
+        nameTextField.becomeFirstResponder()
+        
         // Enable the Save button only if the text field has a valid Meal name.
         updateSaveButtonState()
        
@@ -89,7 +92,7 @@ class CreateListViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         updateSaveButtonState()
-        navigationItem.title = textField.text
+        //navigationItem.title = textField.text
     }
     
 

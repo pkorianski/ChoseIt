@@ -64,6 +64,7 @@ class MyListTableViewController: UITableViewController {
         let photo1 = UIImage(named: "restaurant_pic")
         let photo2 = UIImage(named: "movies_pic")
         let photo3 = UIImage(named: "food_pic")
+        let photo4 = UIImage(named: "coin_pic")
         
         guard let default1 = ChoseList(name: "Restaurants", photo: photo1, list: ["Qdoba","McDonalds"]) else {
             fatalError("Unable to instantiate default1")
@@ -77,7 +78,11 @@ class MyListTableViewController: UITableViewController {
             fatalError("Unable to instantiate default1")
         }
         
-        lists += [default1,default2,default3]
+        guard let default4 = ChoseList(name: "Coin Toss", photo: photo4, list: ["Heads","Tails"]) else {
+            fatalError("Unable to instantiate default1")
+        }
+        
+        lists += [default1,default2,default3, default4]
         
     }
     

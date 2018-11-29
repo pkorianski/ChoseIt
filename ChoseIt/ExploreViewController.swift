@@ -8,7 +8,15 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class ExploreViewController: UIViewController {
+    
+    // API Setup
+    
+    // Yelp API
+    let yelp_clientID = "DHSxEubfFcOXUXvrl1v71w"
+    let yelp_apiKey   = "00ueRAdk-4suKv-rIj8brnwZS53INiEuzovFZQCwonC-4Hih_MZfmvzZ3gaQrGpBFPSC5YQDzGR__T_fd5wW0E9JM198QQWhxeWeHCx_hT2FlkixoPEfvAxPFFT_W3Yx"
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -13,6 +13,19 @@ class DecisionViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: Properties
     @IBOutlet weak var tableView: UITableView!
     var choseList: ChoseList?
+    @IBOutlet weak var choseLabel: UILabel!
+    @IBOutlet weak var choseView: UIView!
+    
+    
+    //MARK: Actions
+    @IBAction func decisionButton(_ sender: Any) {
+        let count = choseList?.list.count
+        if count! > 0 {
+            choseView.isHidden = false
+            let randomNumber = Int(arc4random_uniform(UInt32(count!)))
+            choseLabel.text = "\(choseList?.list[randomNumber] ?? "")"
+        }
+    }
     
     @IBAction func unwindToItemList(sender: UIStoryboardSegue){
         if let sourceVC = sender.source as? CreateItemViewController, let item = sourceVC.item {
@@ -55,7 +68,8 @@ class DecisionViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        choseView.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {

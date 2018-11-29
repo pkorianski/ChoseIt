@@ -15,7 +15,7 @@
 		A75F043521ACFAF10083F4FB /* DecisionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75F043421ACFAF10083F4FB /* DecisionTableViewCell.swift */; };
 		A75F043721AE4B6E0083F4FB /* CreateItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75F043621AE4B6E0083F4FB /* CreateItemViewController.swift */; };
 		A794C9E0219A7DA90036EF29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A794C9DF219A7DA90036EF29 /* AppDelegate.swift */; };
-		A794C9E2219A7DA90036EF29 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A794C9E1219A7DA90036EF29 /* FirstViewController.swift */; };
+		A794C9E2219A7DA90036EF29 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A794C9E1219A7DA90036EF29 /* ExploreViewController.swift */; };
 		A794C9E4219A7DA90036EF29 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A794C9E3219A7DA90036EF29 /* SecondViewController.swift */; };
 		A794C9E7219A7DA90036EF29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A794C9E5219A7DA90036EF29 /* Main.storyboard */; };
 		A794C9E9219A7DAA0036EF29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A794C9E8219A7DAA0036EF29 /* Assets.xcassets */; };
@@ -51,7 +51,7 @@
 		A75F043621AE4B6E0083F4FB /* CreateItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItemViewController.swift; sourceTree = "<group>"; };
 		A794C9DC219A7DA90036EF29 /* ChoseIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoseIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A794C9DF219A7DA90036EF29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A794C9E1219A7DA90036EF29 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		A794C9E1219A7DA90036EF29 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		A794C9E3219A7DA90036EF29 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		A794C9E6219A7DA90036EF29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A794C9E8219A7DAA0036EF29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,20 +113,16 @@
 		A794C9DE219A7DA90036EF29 /* ChoseIt */ = {
 			isa = PBXGroup;
 			children = (
+				A7CF26B421AF918F0045B441 /* More */,
+				A7CF26B321AF91760045B441 /* My List */,
+				A7CF26B221AF91680045B441 /* Search */,
 				A794C9DF219A7DA90036EF29 /* AppDelegate.swift */,
-				A794C9E1219A7DA90036EF29 /* FirstViewController.swift */,
+				A794C9E1219A7DA90036EF29 /* ExploreViewController.swift */,
 				A794C9E3219A7DA90036EF29 /* SecondViewController.swift */,
 				A794C9E5219A7DA90036EF29 /* Main.storyboard */,
 				A794C9E8219A7DAA0036EF29 /* Assets.xcassets */,
 				A794C9EA219A7DAA0036EF29 /* LaunchScreen.storyboard */,
 				A794C9ED219A7DAA0036EF29 /* Info.plist */,
-				A75F042821A262690083F4FB /* MyListTableViewCell.swift */,
-				A75F042A21A2644B0083F4FB /* MyListTableViewController.swift */,
-				A75F042C21A3BBF20083F4FB /* CreateListViewController.swift */,
-				A75F043021ACF4C70083F4FB /* DecisionViewController.swift */,
-				A75F043421ACFAF10083F4FB /* DecisionTableViewCell.swift */,
-				A75F042E21AB1AE50083F4FB /* ChoseList.swift */,
-				A75F043621AE4B6E0083F4FB /* CreateItemViewController.swift */,
 			);
 			path = ChoseIt;
 			sourceTree = "<group>";
@@ -147,6 +143,34 @@
 				A794CA03219A7DAA0036EF29 /* Info.plist */,
 			);
 			path = ChoseItUITests;
+			sourceTree = "<group>";
+		};
+		A7CF26B221AF91680045B441 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		A7CF26B321AF91760045B441 /* My List */ = {
+			isa = PBXGroup;
+			children = (
+				A75F042821A262690083F4FB /* MyListTableViewCell.swift */,
+				A75F042A21A2644B0083F4FB /* MyListTableViewController.swift */,
+				A75F042C21A3BBF20083F4FB /* CreateListViewController.swift */,
+				A75F043021ACF4C70083F4FB /* DecisionViewController.swift */,
+				A75F043421ACFAF10083F4FB /* DecisionTableViewCell.swift */,
+				A75F042E21AB1AE50083F4FB /* ChoseList.swift */,
+				A75F043621AE4B6E0083F4FB /* CreateItemViewController.swift */,
+			);
+			path = "My List";
+			sourceTree = "<group>";
+		};
+		A7CF26B421AF918F0045B441 /* More */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = More;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,7 +313,7 @@
 				A75F042B21A2644B0083F4FB /* MyListTableViewController.swift in Sources */,
 				A75F043521ACFAF10083F4FB /* DecisionTableViewCell.swift in Sources */,
 				A794C9E0219A7DA90036EF29 /* AppDelegate.swift in Sources */,
-				A794C9E2219A7DA90036EF29 /* FirstViewController.swift in Sources */,
+				A794C9E2219A7DA90036EF29 /* ExploreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +514,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = pkapps.ChoseIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
+				"SWIFT_VERSION[arch=*]" = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

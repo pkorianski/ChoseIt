@@ -28,6 +28,9 @@ class CreateItemViewController: UIViewController, UITextFieldDelegate, UINavigat
         // Handle the textfield's user input through delegate callbacks
         itemtextField.delegate = self
         
+        // Make the text field the first responder
+        itemtextField.becomeFirstResponder()
+        
         // Enable save only if itemtextField has a value
         updateSaveButtonState()
         
@@ -41,7 +44,7 @@ class CreateItemViewController: UIViewController, UITextFieldDelegate, UINavigat
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         updateSaveButtonState()
-        navigationItem.title = textField.text
+        //navigationItem.title = textField.text
     }
 
     override func didReceiveMemoryWarning() {
