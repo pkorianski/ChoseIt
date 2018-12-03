@@ -12,7 +12,6 @@ import os.log
 class MyListTableViewController: UITableViewController {
     
     //MARK: Properties
-    //var lists = [String]()
     var lists = [ChoseList]()
     
     //MARK: Actions
@@ -24,6 +23,8 @@ class MyListTableViewController: UITableViewController {
             lists.append(list)
             tableView.insertRows(at: [newIndexPath], with: .automatic)
         }
+        // Saves list to archive
+        saveLists()
     }
 
     override func viewDidLoad() {
@@ -31,6 +32,25 @@ class MyListTableViewController: UITableViewController {
         
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem
+        
+        // Load any saved meals, otherwise load sample data.
+        if let savedLists = loadLists() {
+            lists += savedLists
+            saveLists()
+        }
+        else {
+            // Load default values
+            loadDefaults()
+        }
+        
+//        for i in lists {
+//            print("Name: \(i.name) , list: \(i.list))")
+//        }
+        
+        
+        // Call this method when you come back from DecisionViewController
+        NotificationCenter.default.addObserver(self, selector: #selector(MyListTableViewController.saveItemsInList), name:NSNotification.Name(rawValue: "saveItemsInList"), object: nil)
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -40,7 +60,11 @@ class MyListTableViewController: UITableViewController {
         
         // Load the sample list
         //loadLists()
-        loadDefaults()
+    }
+    
+    @objc func saveItemsInList () {
+        // Save the Lists to include newly added items
+        saveLists()
     }
 
     override func didReceiveMemoryWarning() {
@@ -123,6 +147,9 @@ class MyListTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             lists.remove(at: indexPath.row)
+            
+            // Save lists
+            saveLists()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -148,9 +175,29 @@ class MyListTableViewController: UITableViewController {
             let selectedList = lists[indexPath.row]
             vc.choseList = selectedList
             
+            
         default:
             print("In Default")
         }
+    }
+    
+    //MARK: Private Methods
+    private func saveLists() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(lists, toFile: ChoseList.ArchiveURL.path)
+    
+        if isSuccessfulSave {
+            os_log("Lists successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save meals...", log: OSLog.default, type: .error)
+        }
+    }
+    
+    private func loadLists() -> [ChoseList]? {
+        for i in lists {
+            print("Name: \(i.name) , list: \(i.list))")
+        }
+        return NSKeyedUnarchiver.unarchiveObject(withFile: ChoseList.ArchiveURL.path) as? [ChoseList]
+        
     }
 
     /*
